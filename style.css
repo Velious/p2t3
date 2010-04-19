@@ -9,15 +9,15 @@ form label {
 		padding: 0;
 		margin: 0;
 		/*background-color: #549abc; OLDCOLOR*/
-		background-color: black;
-		/*background-image: url('Pictures/BGpic.jpg');*/
+		background-color: #FAFAFA;
+		background-image: url('http://bits.wikimedia.org/skins-1.5/monobook/headbg.jpg');
 		background-repeat: repeat-x;
 		color: #000;
 		text-align: center;
 	}
-	A:link {color: white;}
-	A:visited {color: white;}
-	A:hover{color: yellow;}
+	A:link {color: mediumblue;}
+	A:visited {color: mediumblue;}
+	A:hover{color: black;}
 	
 	div.contentBox
 	{
@@ -28,7 +28,7 @@ form label {
 		padding: 15px;
 		width: 300px;
 		height: 200px;
-		border: 1px solid gray;
+		border: 1px solid lightgrey;
 		color: #000;
 		text-align: left;
 		float: left;
@@ -43,24 +43,24 @@ form label {
 	
 	
 	#wrap{
-		border-style: ridge;
+		border-style: double;
 		/*border-color: #cc9; OLD COLOR */
-		border-color: Red;
+		border-color: lightgrey;
 		width: 780px;
 		margin-top: 40px;
 		margin-right: auto;
 		margin-left: auto;
 		margin-bottom:40px;
 /*		background: 	#dceef6;  OLD BACKGROUND*/
-		background:   darkblue;
+		background:   white;
 	}
 
 	#Navigation{
 
 		width: 780px;
 		text-align: center;
-		/*background-color: lightblue; OLD COLOR */
-		background-color: darkred;
+		/*background-color: lightgrey; OLD COLOR */
+		background-color: lightgrey;
 	}
 	
 	#main{
@@ -70,7 +70,7 @@ form label {
 		text-align: left;
 		padding-left: 10px;
 		/*background-color: #dceef6; OLD COLOR */
-		background-color: darkblue;
+		background-color: white;
 		
 		}
 		
@@ -78,7 +78,7 @@ form label {
 		float: right;
 		width: 250px;
 		/*background: #dceef6; OLD COLOR */
-		background: darkblue;
+		background: white;
 		text-align: left;
 		padding-left: 10px;
 		margin-right: 20px;
@@ -87,7 +87,7 @@ form label {
      #footer{
      	clear: both;
      	/*background: #cc9; old color*/
-		background: darkred;
+		background: red;
      }
 	
 	
@@ -98,7 +98,7 @@ form label {
 		float: right;
 		padding: 10px;
 		width: 290px;
-		border: 1px solid gray;
+		border: 1px solid lightgrey;
     }
 	
 	
@@ -137,35 +137,35 @@ form label {
 	h1	
 	{
 		/*color: #039; OLD COLOR */
-		color: red;
+		color: dimgray;
 		background-color: transparent;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-		font-size: 20px;
+		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
+		font-size: 25px;
 	}
 	h2
 	{
-		color:red;
+		color:dimgray;
 	}
 	h3
 	{
-		color: red;
+		color:dimgray;
 	}
 
 	h4
 	{
-		color: red;
+		color:dimgray;
 	}	
 
 	h6
 	{
-		color: red;
+		color:dimgray;
 	}
 	
 	label
 	{
-		color: darkred;
+		color:dimgray;
 		background-color: transparent;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.8em;
 	}
 	
@@ -173,9 +173,9 @@ form label {
 	p	
 	{
 		/*color: #039; OLD COLOR*/
-		color: red;
+		color: dimgray;
 		background-color: transparent;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.8em;
 	}
 
@@ -184,7 +184,7 @@ form label {
 	{
 		color: #039;
 		background-color: transparent;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.6em;
 	}
 
@@ -194,7 +194,7 @@ form label {
 	{
 		color: #039;
 		background-color: transparent;
-		font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.8em;
 	}
 
@@ -202,7 +202,7 @@ form label {
 	{
 		color: #039;
 		background-color: transparent;
-		font-family: Arial, Helvetica, sans-serif;
+		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.8em;
 	}
 	
@@ -210,7 +210,7 @@ form label {
 	{
 		color: #039;
 		background-color: transparent;
-		font-family: Arial, Helvetica, sans-serif;
+		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	}
 	
 	input[type=text]
@@ -247,14 +247,14 @@ form label {
 	
 	input[type=submit]
 	{
-		background-color: lightblue;
-		color: darkred;
+		background-color: lightgrey;
+		color: red;
 
 	}
 	
 	input[type=button]
 	{
-		background-color: lightblue;
+		background-color: lightgrey;
 	}
 	
 	.comment
@@ -266,8 +266,8 @@ form label {
 	{
 		width: 450px;
 		border: 1px solid red;
-		color: darkred;
-		background-color: lightblue;
+		color: red;
+		background-color: lightgrey;
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 10px;
@@ -284,8 +284,8 @@ form label {
 	{
 		width: 400px;
 		border: 1px solid red;
-		color: darkred;
-		background-color: lightblue;
+		color: red;
+		background-color: lightgrey;
 	}
 	
 	.uprank
@@ -302,7 +302,7 @@ form label {
 	
 	.downrank
 	{
-		border: 2px solid darkred;
+		border: 2px solid red;
 		background-color: red;
 		text-decoration: none;
 		font-weight: bold;
@@ -310,7 +310,7 @@ form label {
 		padding-right: 8px;
 	}
 	
-	a:hover.downrank {color: darkred;}
+	a:hover.downrank {color: red;}
 	
 	.full-star {}
 	.half-star {}
@@ -320,18 +320,18 @@ table.report {
 	border-width: thin;
 	border-spacing: ;
 	border-style: hidden;
-	border-color: blue;
+	border-color: lightgrey;
 	border-collapse: separate;
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	
 }
 th.report {
 	border-width: 1px;
 	padding: 3px;
 	border-style: inset;
-	border-color: blue;
+	border-color: lightgrey;
 	background-color: rgb(220, 238, 246);
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	font-size: 0.8em;
 	
 }
@@ -339,16 +339,16 @@ td.report {
 	border-width: 1px;
 	padding: 3px;
 	border-style: inset;
-	border-color: blue;
+	border-color: lightgrey;
 	background-color: rgb(220, 238, 246);
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	font-size: 0.8em;
 	
 }
 
 #hor-minimalist-b
 {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	font-size: 12px;
 	background: #dceef6;;
 	margin: 5px;
