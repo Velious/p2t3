@@ -1,4 +1,4 @@
 <?php
 $connection = new Mongo();
-$db = $connection->blog;
+$db = $connection->blogdb->blogs;
 ?>
