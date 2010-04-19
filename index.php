@@ -1,5 +1,5 @@
 <?php
-//include("db_connect.php");
+include("db_connect.php");
 	
 $post_id = $_GET['pid'];
 $start = $_GET['start'];
