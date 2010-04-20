@@ -24,6 +24,8 @@
 <form method='post' action='addblog.php' align="left">
 <br /><label style='vertical-align:top;' for='name'>Blogger Name:</label>
 	  <input name='name' type='text' placeholder="Name of Blogger" />
+<br>  <label  style='vertical-align:top;' for='title'> Blog Title:</label>
+		<input name='title' type='text' placeholder="Title of this Blog."/>
 <br /><label style='vertical-align:top;' for='blog'>Blog Entry: <br> <h5>**MAX 300 Characters**</h5></label>
 	  <textarea name='blog' rows=10 maxlength=300 placeholder="Blog Entry             (MAX 300 characters)"></textarea>
 

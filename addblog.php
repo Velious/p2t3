@@ -11,7 +11,7 @@ $month=date("F");
 $day=date("j");
 $year=date("Y");
 $time=date("g:i a");
-
+$title=$_POST['title'];
 $doc = array( 
 	"name" => $name,
 	"date" => $date,
@@ -19,6 +19,7 @@ $doc = array(
 	"day" => $day,
 	"year" => $year,
 	"time" => $time,
+	"title" => $title,
 	"blog" => $blog
 );
 $db->blogs->insert( $doc );
