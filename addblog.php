@@ -21,7 +21,7 @@ $doc = array(
 	"time" => $time,
 	"blog" => $blog
 );
-$db->insert( $doc );
+$db->blogs->insert( $doc );
 
 header("location:add.php?saved=1");
 

@@ -26,7 +26,8 @@
 	  <input name='name' type='text' placeholder="Name of Blogger" />
 <br /><label style='vertical-align:top;' for='blog'>Blog Entry: <br> <h5>**MAX 300 Characters**</h5></label>
 	  <textarea name='blog' rows=10 maxlength=300 placeholder="Blog Entry             (MAX 300 characters)"></textarea>
-
+<BR> <label style='vertical-align:top;' for='blog'>Blog Title: </label>
+		<input  name='title' type='text' placeholder='Title of Blog' />
 <p><input style='display:block; margin-left:auto; margin-right:auto;' type='submit' value=' Submit ' /></p>
 </form>
 </div> <!-- End 'blog' div -->

@@ -1,4 +1,12 @@
 <?php
-$connection = new Mongo();
-$db = $connection->blogdb->blogs;
+try
+{
+	$connection = new Mongo();
+	$db = $connection->blogdb->blogs;
+}
+
+catch (MongoConnectionException $e)
+{
+	error_log($e->getMessage());
+}
 ?>
