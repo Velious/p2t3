@@ -5,5 +5,6 @@
 	<div id="Navigation">
 	<a href=".">Home</a> | 
 	<a href="add">Add Entry</a> | 
+	<a href="edit">Edit View</a> | 
 	<a href="about">About</a>
 	</div>

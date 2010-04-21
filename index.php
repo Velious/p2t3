@@ -5,6 +5,7 @@ $post_id = $_GET['pid'];
 $start = $_GET['start'];
 $end = $_GET['end'];
 $label = $_GET['label'];
+$edit_view = ($_GET['edit'] == 1);
 
 if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 {
@@ -28,7 +29,7 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 	<div id="blog"><br />
   
 	<?php
-	$cursor = $db->blogs->find();
+	$cursor = $db->blogs->find()->sort(array("year" => 1, "month" => 1, "day" => 1, "time" => 1));
 	$num_posts = $db->blogs->count();
 	$posts = array();
 	$count = 0;
@@ -64,7 +65,33 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 			}
 		}
 	}
+	?>
 	
+	<script type='text/javascript'>
+	function validatePostForm(form)
+	{
+		var title = form.title.value.trim();
+		var blog = form.blog.value.trim();
+		
+		if ((title != "") && (blog != ""))
+			return true;
+			
+		else
+		{
+			var redBorder = "2px solid red";
+			
+			if (title == "")
+				form.title.style.border = redBorder;
+				
+			if (blog == "")
+				form.blog.style.border = redBorder;
+		}
+		
+		return false;
+	}
+	</script>
+	
+	<?php
 	$count = 1;
 	
 	for ($i = $num_posts; $i > 0; $i--)
@@ -72,7 +99,7 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 		$post = $posts[($i - 1)];
 		$id = $post["_id"]->__toString();
 		$title = $post['title'];
-		$body = nl2br($post['blog']);
+		$body = $post['blog'];
 		$author = $post['name'];
 		$date = $post['date'];
 		$time = $post['time'];
@@ -89,10 +116,30 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 		}
 		
 		if ($label_matches || ($id == $post_id) || (empty($label) && ($count >= $start) && ($count <= $end)))
-		{			
+		{
 			echo "<fieldset class='blog-post'>\n";
-			echo "<h1 style='text-align:center;'><a class='post-title' href='?pid=$id'>$title</a></h1>\n";
-			echo "<p class='post-body;' style='text-align:left;'>$body</p>\n";
+			
+			if (!$edit_view)
+			{
+				echo "<h1 style='text-align:center;'><a class='post-title' href='?pid=$id'>$title</a></h1>\n";
+			}
+			
+			else
+			{
+				echo "<form onClick='return validatePostForm(this);' method='post' action='updatepost.php?id=$id'>\n";
+				echo "<input class='edit-post' type='text' name='title' ";
+				echo "value='$title' />\n";
+			}
+			
+			if (!$edit_view)
+			{
+				echo "<p style='text-align:left;'>".nl2br($body)."</p>\n";
+			}
+			
+			else
+			{
+				echo "<textarea class='edit-post' name='blog' rows=10>$body</textarea>\n";
+			}
 			
 			$first_label = true;
 			
@@ -105,16 +152,41 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 					
 					if ($first_label)
 					{
-						echo "<p style='text-align:left;'>";
-						echo "<span style='font-weight:bold;'>Labels:</span> $label_link";
+						if (!$edit_view) echo "<p style='text-align:left;'>";
+						else echo "<p style='text-align:center;'>";
+						echo "<span style='font-weight:bold;'>Labels:</span> ";
+						if (!$edit_view) echo $label_link;
+						else echo "<input style='width:525px;' type='text' name='labels' value='$l";
 						$first_label = false;
 					}
 					
-					else echo ", $label_link";
+					else
+					{
+						echo ", ";
+						if (!$edit_view) echo $label_link;
+						else echo $l;
+					}
 				}
 			}
 			
-			if (!$first_label) echo "</p>\n";
+			else if ($edit_view)
+			{
+				echo "<p style='text-align:center;'><span style='font-weight:bold;'>Labels:</span> ";
+				echo "<input style='width:525px;' type='text' name='labels' /></p>\n";
+			}
+			
+			if (!$first_label)
+			{
+				if ($edit_view) echo "' />";
+				echo "</p>\n";
+			}
+			
+			if ($edit_view)
+			{
+				echo "<input style='display:block; margin:0px auto 20px auto;' type='submit' ";
+				echo "value='  Save Changes  ' />\n";
+				echo "</form>\n";
+			}
 			
 			echo "<span class='post-info'>\n";
 			echo "Posted by $author on $date.";
@@ -122,14 +194,19 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 			
 			echo "<span style='float:right;'>";
 			
-			if (empty($post_id))
+			if (empty($post_id) && !$edit_view)
 			{
 				echo "<a href='.?pid=$id#comments'>Comments</a>";
 			}
 			
 			else
 			{
-				//echo "<input onClick=\"parent.location = '.?pid=$post_id&edit=1';\" type='button' value='Edit' /> \n";
+				if (!$edit_view)
+				{
+					echo "<input onClick=\"parent.location = 'edit?pid=$post_id';\" type='button' ";
+					echo "value='Edit' /> \n";
+				}
+				
 				echo "<input onClick=\"if (confirm('Permanently delete this post?')) ";
 				echo "parent.location = 'deletepost.php?id=$post_id';\" type='button' value='Delete' />\n";
 			}
@@ -143,14 +220,21 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 			}
 		}
 		
-		$count++;
+		if (empty($label) || $label_matches) $count++;
 	}
 	
-	if (empty($post_id) && empty($label))
+	if (empty($post_id))
 	{
 		echo "<p style='text-align:center;'>\n";
 	
-		if ($start > 1) echo "<a href='.?start=".($start - 10)."&end=".($start - 1)."'>Previous Page</a>\n";
+		if ($start > 1)
+		{
+			echo "<a href='";
+			if (!$edit_view) echo ".";
+			else echo "edit";
+			echo "?start=".($start - 10)."&end=".($start - 1);
+			echo "'>Previous Page</a>\n";
+		}
 		
 		if (($start > 1) && ($num_posts > $end))
 		{
@@ -160,7 +244,14 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 			}
 		}
 		
-		if ($num_posts > $end) echo "<a href='.?start=".($end + 1)."&end=".($end + 10)."'>Next Page</a>\n";
+		if ($num_posts > $end)
+		{
+			echo "<a href='";
+			if (!$edit_view) echo ".";
+			else echo "edit";
+			echo "?start=".($end + 1)."&end=".($end + 10)."'>Next Page</a>\n";
+		}
+		
 		echo "</p>\n";
 	}
 		

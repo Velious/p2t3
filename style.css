@@ -375,6 +375,15 @@ form label {
 		color: blue;
 		text-decoration: underline;
 	}
+	
+	.edit-post
+	{
+		width: 600px;
+		display: block;
+		margin-top: 25px;
+		margin-left: auto;
+		margin-right: auto;
+	}
     
 table.report {
 	border-width: thin;
