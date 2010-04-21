@@ -45,7 +45,7 @@ form label {
 	#wrap{
 		border-style: double;
 		/*border-color: #cc9; OLD COLOR */
-		border-color: lightgrey;
+		border-color: mediumblue;
 		width: 780px;
 		margin-top: 40px;
 		margin-right: auto;
@@ -60,7 +60,7 @@ form label {
 		width: 780px;
 		text-align: center;
 		/*background-color: lightgrey; OLD COLOR */
-		background-color: lightgrey;
+		background-color: lightsteelblue;
 	}
 	
 	#main{
@@ -169,7 +169,7 @@ form label {
 	
 	label
 	{
-		color:dimgray;
+		color:black;
 		background-color: transparent;
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.8em;
@@ -220,15 +220,16 @@ form label {
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	}
 	
-	/*
+	
 	input[type=text]
 	{
-		margin-top: 5px;
-		margin-bottom: 5px;
-		background-color: white;
+		border: double;
+		border-color: mediumblue;
+		background-color: lightsteelblue;
 		color: black;
 		width: 200px;
 	}
+	/*
 	input[type=password]
 	{
 		margin-top: 5px;
@@ -248,10 +249,12 @@ form label {
 	
 	textarea
 	{
+		border: double;
+		border-color: mediumblue;
 		margin-top: 5px;
 		margin-bottom: 5px;
 		width: 200px;
-		background-color: white;
+		background-color: lightsteelblue;
 	}
 	
 	/*
@@ -340,13 +343,20 @@ form label {
 	.post-info
 	{
 		float: left;
-		color: grey;
+		color: lightsteelblue;
 		font-size: 0.8em;
 	}
 	
 	.comment
 	{
 		width: 600px;
+	}
+	
+	fieldset
+	{
+		border: double mediumblue;
+		background: sold lightsteelblue;
+		
 	}
 	
 	fieldset.comment
@@ -389,7 +399,7 @@ table.report {
 	border-width: thin;
 	border-spacing: ;
 	border-style: hidden;
-	border-color: lightgrey;
+	border-color: mediumblue;
 	border-collapse: separate;
 	font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	
