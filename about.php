@@ -14,7 +14,7 @@
 	<fieldset class='blog-post'>
 	<center>
 	<p>
-	WikiBlog was created by team 3 of 
+	<span style="font-weight:bold;">WikiBlog</span> was created by team 3 of 
 	<a href="http://www.zacharski.org/courses/spring-2010/cs350-applications-of-databases/">
 	Professor Zacharski's spring 2010 Applications of Databases class (CPSC 350-01)</a> 
 	for project 2 (NoSQL) using MongoDB.
