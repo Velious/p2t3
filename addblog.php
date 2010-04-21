@@ -1,17 +1,19 @@
 <?php
 include("db_connect.php");
-$name = $_POST['name'];
-$blog = $_POST['blog'];
+$name = htmlspecialchars(strip_tags($_POST['name']));
+$blog = htmlspecialchars(strip_tags($_POST['blog']));
+if (!empty($_POST['labels'])) $labels = explode(",", htmlspecialchars(strip_tags($_POST['labels'])));
 //$date= date('m/d/y');
 //$time= time();
-$date=date("F j, Y, ");
+$date=date("F j, Y ");
 $date.= "at ".date(" g:i a");
 
 $month=date("F");
 $day=date("j");
 $year=date("Y");
 $time=date("g:i a");
-$title=$_POST['title'];
+$title = htmlspecialchars(strip_tags($_POST['title']));
+
 $doc = array( 
 	"name" => $name,
 	"date" => $date,
@@ -20,15 +22,11 @@ $doc = array(
 	"year" => $year,
 	"time" => $time,
 	"title" => $title,
-	"blog" => $blog
+	"blog" => $blog,
+	"labels" => $labels
 );
 $db->blogs->insert( $doc );
 
-header("location:add.php?saved=1");
-
-
-
-
-
-
+//header("location:add.php?saved=1");
+header("location:.");
 ?>

@@ -1,6 +1,6 @@
 <?php
 include("db_connect.php");
-	
+
 $post_id = $_GET['pid'];
 $start = $_GET['start'];
 $end = $_GET['end'];
@@ -25,79 +25,149 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 <body>
 <div id="wrap">
     <?php include("header.php"); ?>
-	<center><div id="blog">
+	<div id="blog"><br />
   
 	<?php
+	$cursor = $db->blogs->find();
+	$num_posts = $db->blogs->count();
 	$posts = array();
+	$count = 0;
 	
-	if (!empty($post_id))
+	foreach ($cursor as $id => $value)
 	{
-		//$posts = query to get single post here
+		$posts[$count++] = $value;
 	}
 	
-	else if (!empty($label))
-	{
-		//$posts = query to get posts with the given label here
-	}
-	
-	else
+	if (empty($post_id))
 	{
 		if (empty($start) && empty($end))
 		{
-			//$end = query to get most recent post;
-			//$start = $end - 10;
-			if ($start < 1) $start = 1;
+			$start = 1;
+			$end = 10;
 		}
-		
-		else if (empty($start))
+	
+		else
 		{
-			//$start = $end - 10;
-			if ($start < 1) $start = 1;
-		}
-		
-		else if (empty($end))
-		{
-			$end = $start + 10;
+			if (empty($start))
+			{
+				if (($end - 10) > 0) $start = $end - 10;
+			}
 			
-			//while ($end > query to get most recent post here)
-			//{
-			//	--$end;
-			//}
+			if (empty($end))
+			{
+				$end = $start + 10;
+				
+				while ($end > $num_posts)
+				{
+					$end--;
+				}
+			}
 		}
 	}
 	
-	foreach ($posts as $post)
-	{	
-		echo "<div class='blog-post'>\n";
-		echo "<h1><a href='?pid=$id'>$title</a></h1>\n";
-		echo "<p>$body</p>\n";
-		
-		if (empty($post_id))
-		{
-			echo "<span style='float:right;'><a href='.?pid=$id#comments'>Comments ($num_comments)</span>";
-		}
-		
-		echo "</div>\n";
-		
-		if (!empty($post_id))
-		{
-			include("listcomments.php");
-		}
-	}
+	$count = 1;
 	
-	echo "<p style='text-align:center;'>\n";
-	echo "<a href='.?start=".($start - 11)."&end=".($start - 1)."'>Previous Page</a>\n";
-	
-	for ($i = 0; $i < 15; $i++)
+	for ($i = $num_posts; $i > 0; $i--)
 	{
-		echo "&nbsp;";
+		$post = $posts[($i - 1)];
+		$id = $post["_id"]->__toString();
+		$title = $post['title'];
+		$body = nl2br($post['blog']);
+		$author = $post['name'];
+		$date = $post['date'];
+		$time = $post['time'];
+		$date = $post['date'];
+		$labels = $post['labels'];
+		$label_matches = false;
+		
+		if (is_array($labels))
+		{
+			foreach ($labels as $l)
+			{
+				if (!empty($l) && (strtolower(trim($l)) == strtolower($label))) $label_matches = true;
+			}
+		}
+		
+		if ($label_matches || ($id == $post_id) || (empty($label) && ($count >= $start) && ($count <= $end)))
+		{			
+			echo "<fieldset class='blog-post'>\n";
+			echo "<h1 style='text-align:center;'><a class='post-title' href='?pid=$id'>$title</a></h1>\n";
+			echo "<p class='post-body;' style='text-align:left;'>$body</p>\n";
+			
+			$first_label = true;
+			
+			if (is_array($labels))
+			{
+				foreach ($labels as $l)
+				{
+					$l = trim($l);
+					$label_link = "<a href='.?label=$l'>$l</a>";
+					
+					if ($first_label)
+					{
+						echo "<p style='text-align:left;'>";
+						echo "<span style='font-weight:bold;'>Labels:</span> $label_link";
+						$first_label = false;
+					}
+					
+					else echo ", $label_link";
+				}
+			}
+			
+			if (!$first_label) echo "</p>\n";
+			
+			echo "<span class='post-info'>\n";
+			echo "Posted by $author on $date.";
+			echo "</span>\n";
+			
+			echo "<span style='float:right;'>";
+			
+			if (empty($post_id))
+			{
+				echo "<a href='.?pid=$id#comments'>Comments</a>";
+			}
+			
+			else
+			{
+				echo "<input onClick=\"parent.location = '.?pid=$post_id&edit=1';\" type='button' value='Edit' /> \n";
+				echo "<input onClick=\"if (confirm('Permanently delete this post?')) ";
+				echo "parent.location = 'deletepost.php?id=$post_id';\" type='button' value='Delete' />\n";
+			}
+			
+			echo "</span>\n";			
+			echo "</fieldset>\n";
+			
+			if (!empty($post_id))
+			{
+				include("listcomments.php");
+			}
+		}
+		
+		$count++;
 	}
 	
-	echo "\n";	
-	echo "<a href='.?start=".($end + 1)."&end=".($end + 11)."'>Next Page</a>\n</p>\n";
+	if (empty($post_id) && empty($label))
+	{
+		echo "<p style='text-align:center;'>\n";
+	
+		if ($start > 1) echo "<a href='.?start=".($start - 10)."&end=".($start - 1)."'>Previous Page</a>\n";
+		
+		if (($start > 1) && ($num_posts > $end))
+		{
+			for ($i = 0; ($i < 15) && ($start > 0) && ($end < $num_posts); $i++)
+			{
+				echo "&nbsp;\n";
+			}
+		}
+		
+		if ($num_posts > $end) echo "<a href='.?start=".($end + 1)."&end=".($end + 10)."'>Next Page</a>\n";
+		echo "</p>\n";
+	}
+		
+	echo "<br />";
 	?>
 	
-	</div></center>
+	</div>
 </div>
 </div>
 </body>

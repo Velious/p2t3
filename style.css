@@ -115,6 +115,12 @@ form label {
 		text-align: left;
 	}
 	
+	#blog
+	{
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}	
 	
 	textarea {
 		background-color: #dceef6;
@@ -173,10 +179,10 @@ form label {
 	p	
 	{
 		/*color: #039; OLD COLOR*/
-		color: dimgray;
+		color: black;
 		background-color: transparent;
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
-		font-size: 0.8em;
+		font-size: 1em;
 	}
 
 
@@ -189,7 +195,7 @@ form label {
 	}
 
 
-	
+	/*
 	input
 	{
 		color: #039;
@@ -197,6 +203,7 @@ form label {
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.8em;
 	}
+	*/
 
     #plain
 	{
@@ -213,6 +220,7 @@ form label {
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	}
 	
+	/*
 	input[type=text]
 	{
 		margin-top: 5px;
@@ -236,6 +244,7 @@ form label {
 		background-color: white;
 		color: black;
 	}
+	*/
 	
 	textarea
 	{
@@ -245,19 +254,20 @@ form label {
 		background-color: white;
 	}
 	
+	/*
 	input[type=submit]
 	{
 		background-color: lightgrey;
-		color: red;
-
+		color:black;
 	}
 	
 	input[type=button]
 	{
 		background-color: lightgrey;
 	}
+	*/
 	
-	.comment
+	/*.comment
 	{
 		width: 475px;
 	}
@@ -265,12 +275,13 @@ form label {
 	fieldset.comment
 	{
 		width: 450px;
-		border: 1px solid red;
-		color: red;
-		background-color: lightgrey;
+		border: 1px solid black;
+		color: black;
+		background-color: #F0F0F0;
 		margin-left: auto;
 		margin-right: auto;
 		margin-top: 10px;
+		text-align: left;
 	}
 	
 	.reply
@@ -283,10 +294,10 @@ form label {
 	fieldset.reply
 	{
 		width: 400px;
-		border: 1px solid red;
-		color: red;
-		background-color: lightgrey;
-	}
+		border: 1px solid black;
+		color: black;
+		background-color: #F0F0F0;
+	}*/
 	
 	.uprank
 	{
@@ -315,6 +326,55 @@ form label {
 	.full-star {}
 	.half-star {}
 	.empty-star {}
+	
+	.blog-post
+	{
+		width: 600px;
+		margin: 20px auto 20px auto;
+		padding: 0px 20px 15px 20px;
+		border: 5px grooved black;
+		background-color: #F0F0F0;
+		display: block;
+	}
+	
+	.post-info
+	{
+		float: left;
+		color: grey;
+		font-size: 0.8em;
+	}
+	
+	.comment
+	{
+		width: 600px;
+	}
+	
+	fieldset.comment
+	{
+		width: 600px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		border-top: 5px grooved black;
+		border-bottom-style: hidden;
+		border-left-style: hidden;
+		border-right-style: hidden;
+		display: block;
+		text-align: left;
+	}
+	
+	a.post-title
+	{
+		color: black;
+		text-decoration: none;
+	}
+	
+	a:hover.post-title
+	{
+		color: blue;
+		text-decoration: underline;
+	}
     
 table.report {
 	border-width: thin;
