@@ -129,7 +129,7 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 			
 			else
 			{
-				echo "<input onClick=\"parent.location = '.?pid=$post_id&edit=1';\" type='button' value='Edit' /> \n";
+				//echo "<input onClick=\"parent.location = '.?pid=$post_id&edit=1';\" type='button' value='Edit' /> \n";
 				echo "<input onClick=\"if (confirm('Permanently delete this post?')) ";
 				echo "parent.location = 'deletepost.php?id=$post_id';\" type='button' value='Delete' />\n";
 			}
