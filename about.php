@@ -14,16 +14,16 @@
 	<fieldset class='blog-post'>
 	<center>
 	<p>
-	<span style="font-weight:bold;">WikiBlog</span> was created by team 3 of 
+	<span style="font-weight:bold;">WikiBlog</span> was created by Team 3 of 
 	<a href="http://www.zacharski.org/courses/spring-2010/cs350-applications-of-databases/">
 	Professor Zacharski's spring 2010 Applications of Databases class (CPSC 350-01)</a> 
-	for project 2 (NoSQL).
+	for Project 2 (NoSQL).
 	</p>
 	<ul>
-	<li>Stephen Jackson (Git)</li>
-	<li>Owen Jones (CSS)</li>
-	<li>Matt Martin (PHP/HTML, JavaScript, CSS, MongoDB)</li>
-	<li>Amy Olson (MongoDB)</li>
+	<li>Stephen Jackson (Git)</li><br />
+	<li>Owen Jones (CSS)</li><br />
+	<li>Matt Martin (PHP/HTML, JavaScript, CSS, MongoDB)</li><br />
+	<li>Amy Olson (MongoDB)</li><br />
 	<li>Patrick Taitt (PHP/HTML, MongoDB)</li>
 	</ul>
 	</center>

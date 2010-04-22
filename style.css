@@ -8,7 +8,6 @@ form label {
 	{		
 		padding: 0;
 		margin: 0;
-		/*background-color: #549abc; OLDCOLOR*/
 		background-color: #FAFAFA;
 		background-image: url('http://bits.wikimedia.org/skins-1.5/monobook/headbg.jpg');
 		background-repeat: repeat-x;
@@ -37,21 +36,17 @@ form label {
 	div.wrapper
 	{
 		width: 600px;
-	
-	
 	}
 	
 	
 	#wrap{
 		border-style: double;
-		/*border-color: #cc9; OLD COLOR */
-		border-color: mediumblue;
+		border-color: lightgrey;
 		width: 780px;
 		margin-top: 40px;
 		margin-right: auto;
 		margin-left: auto;
 		margin-bottom:40px;
-/*		background: 	#dceef6;  OLD BACKGROUND*/
 		background:   white;
 	}
 
@@ -59,8 +54,7 @@ form label {
 
 		width: 780px;
 		text-align: center;
-		/*background-color: lightgrey; OLD COLOR */
-		background-color: lightsteelblue;
+		background-color: lightgrey;
 	}
 	
 	#main{
@@ -69,7 +63,6 @@ form label {
 		
 		text-align: left;
 		padding-left: 10px;
-		/*background-color: #dceef6; OLD COLOR */
 		background-color: white;
 		
 		}
@@ -77,7 +70,6 @@ form label {
 	#sidebar{
 		float: right;
 		width: 250px;
-		/*background: #dceef6; OLD COLOR */
 		background: white;
 		text-align: left;
 		padding-left: 10px;
@@ -86,7 +78,6 @@ form label {
 		
      #footer{
      	clear: both;
-     	/*background: #cc9; old color*/
 		background: red;
      }
 	
@@ -142,7 +133,6 @@ form label {
 	
 	h1	
 	{
-		/*color: #039; OLD COLOR */
 		color: dimgray;
 		background-color: transparent;
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
@@ -169,7 +159,7 @@ form label {
 	
 	label
 	{
-		color:black;
+		color:dimgray;
 		background-color: transparent;
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.8em;
@@ -178,7 +168,6 @@ form label {
 	
 	p	
 	{
-		/*color: #039; OLD COLOR*/
 		color: black;
 		background-color: transparent;
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
@@ -193,17 +182,6 @@ form label {
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 		font-size: 0.6em;
 	}
-
-
-	/*
-	input
-	{
-		color: #039;
-		background-color: transparent;
-		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
-		font-size: 0.8em;
-	}
-	*/
 
     #plain
 	{
@@ -220,115 +198,12 @@ form label {
 		font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
 	}
 	
-	
-	input[type=text]
-	{
-		border: double;
-		border-color: mediumblue;
-		background-color: lightsteelblue;
-		color: black;
-		width: 200px;
-	}
-	/*
-	input[type=password]
-	{
-		margin-top: 5px;
-		margin-bottom: 5px;
-		background-color: white;
-		color: black;
-		width: 200px;
-	}
-	input[type=file]
-	{
-		margin-top: 5px;
-		margin-bottom: 5px;
-		background-color: white;
-		color: black;
-	}
-	*/
-	
 	textarea
 	{
-		border: double;
-		border-color: mediumblue;
 		margin-top: 5px;
 		margin-bottom: 5px;
-		width: 200px;
-		background-color: lightsteelblue;
+		background-color: white;
 	}
-	
-	/*
-	input[type=submit]
-	{
-		background-color: lightgrey;
-		color:black;
-	}
-	
-	input[type=button]
-	{
-		background-color: lightgrey;
-	}
-	*/
-	
-	/*.comment
-	{
-		width: 475px;
-	}
-	
-	fieldset.comment
-	{
-		width: 450px;
-		border: 1px solid black;
-		color: black;
-		background-color: #F0F0F0;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 10px;
-		text-align: left;
-	}
-	
-	.reply
-	{
-		width: 425px;
-		margin-top: 5px;
-		margin-left: 56px;
-	}
-	
-	fieldset.reply
-	{
-		width: 400px;
-		border: 1px solid black;
-		color: black;
-		background-color: #F0F0F0;
-	}*/
-	
-	.uprank
-	{
-		border: 2px solid darkgreen;
-		background-color: green;
-		text-decoration: none;
-		font-weight: bold;
-		padding-left: 6px;
-		padding-right: 6px;
-	}
-	
-	a:hover.uprank {color: darkgreen;}
-	
-	.downrank
-	{
-		border: 2px solid red;
-		background-color: red;
-		text-decoration: none;
-		font-weight: bold;
-		padding-left: 8px;
-		padding-right: 8px;
-	}
-	
-	a:hover.downrank {color: red;}
-	
-	.full-star {}
-	.half-star {}
-	.empty-star {}
 	
 	.blog-post
 	{
@@ -343,20 +218,13 @@ form label {
 	.post-info
 	{
 		float: left;
-		color: lightsteelblue;
+		color: grey;
 		font-size: 0.8em;
 	}
 	
 	.comment
 	{
 		width: 600px;
-	}
-	
-	fieldset
-	{
-		border: double mediumblue;
-		background: sold lightsteelblue;
-		
 	}
 	
 	fieldset.comment
@@ -394,36 +262,6 @@ form label {
 		margin-left: auto;
 		margin-right: auto;
 	}
-    
-table.report {
-	border-width: thin;
-	border-spacing: ;
-	border-style: hidden;
-	border-color: mediumblue;
-	border-collapse: separate;
-	font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
-	
-}
-th.report {
-	border-width: 1px;
-	padding: 3px;
-	border-style: inset;
-	border-color: lightgrey;
-	background-color: rgb(220, 238, 246);
-	font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
-	font-size: 0.8em;
-	
-}
-td.report {
-	border-width: 1px;
-	padding: 3px;
-	border-style: inset;
-	border-color: lightgrey;
-	background-color: rgb(220, 238, 246);
-	font-family: 'Hoefler Text', 'Times New Roman', 'Times New Roman', Times, serif;
-	font-size: 0.8em;
-	
-}
 
 #hor-minimalist-b
 {
