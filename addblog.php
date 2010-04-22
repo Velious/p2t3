@@ -6,12 +6,12 @@ if (!empty($_POST['labels'])) $labels = explode(",", htmlspecialchars(strip_tags
 //$date= date('m/d/y');
 //$time= time();
 $date=date("F j, Y ");
-$date.= "at ".date(" g:i a");
+$date.= "at ".date(" g:i A");
 
-$month=date("F");
+$month=date("n");
 $day=date("j");
 $year=date("Y");
-$time=date("g:i a");
+$time=date("His");
 $title = trim(htmlspecialchars(strip_tags($_POST['title'])));
 
 $doc = array( 

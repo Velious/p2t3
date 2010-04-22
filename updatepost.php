@@ -11,5 +11,16 @@ if (!empty($title)) $blogs->update(array("_id" => new MongoID($post_id)), array(
 if (!empty($blog)) $blogs->update(array("_id" => new MongoID($post_id)), array('$set' => array("blog" => $blog)));
 $blogs->update(array("_id" => new MongoID($post_id)), array('$set' => array("labels" => $labels)));
 
-header("location:.?pid=$post_id");
+$start = $_GET['start'];
+$end = $_GET['end'];
+
+if (empty($start) || empty($end))
+{
+	header("location:.?pid=$post_id");
+	exit;
+}
+
+else if (($start == 1) && ($end == 10)) header("location:.#post$post_id");
+
+else header("location:.?start=$start&end=$end#post$post_id");
 ?>

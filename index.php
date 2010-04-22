@@ -117,6 +117,7 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 		
 		if ($label_matches || ($id == $post_id) || (empty($label) && ($count >= $start) && ($count <= $end)))
 		{
+			echo "<a name='post$id'></a>\n";
 			echo "<fieldset class='blog-post'>\n";
 			
 			if (!$edit_view)
@@ -126,15 +127,29 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 			
 			else
 			{
-				echo "<form onClick='return validatePostForm(this);' method='post' action='updatepost.php?id=$id'>\n";
+				echo "<form onClick='return validatePostForm(this);' method='post' ";
+				echo "action='updatepost.php?id=$id&start=$start&end=$end'>\n";
 				echo "<input class='edit-post' type='text' name='title' ";
 				echo "value='$title' />\n";
 			}
 			
-			if (!$edit_view)
-			{
-				echo "<p style='text-align:left;'>".nl2br($body)."</p>\n";
-			}
+			$formatted_body = nl2br($body);
+			$formatted_body = str_ireplace("[b]", "<span style='font-weight:bold;'>", $formatted_body);
+			$formatted_body = str_ireplace("[i]", "<span style='font-style:italic;'>", $formatted_body);
+			$formatted_body = str_ireplace("[u]", "<span style='text-decoration:underline;'>", $formatted_body);
+			$formatted_body = str_ireplace("[s]", "<span style='text-decoration:line-through;'>", $formatted_body);
+			$formatted_body = str_ireplace("[url]", "<a href='", $formatted_body);
+			$formatted_body = str_ireplace("[/b]", "</span>", $formatted_body);
+			$formatted_body = str_ireplace("[/i]", "</span>", $formatted_body);
+			$formatted_body = str_ireplace("[/u]", "</span>", $formatted_body);
+			$formatted_body = str_ireplace("[/s]", "</span>", $formatted_body);
+			$formatted_body = str_ireplace("[/url]", "' />[link]</a>", $formatted_body);
+			$formatted_body = str_ireplace("[img]", "<img style='display:block; margin-left:auto; margin-right:auto;' src='", $formatted_body);
+			$formatted_body = str_ireplace("[/img]", "' />", $formatted_body);
+			$formatted_body = str_ireplace("[youtube]", "<center><object width='560' height='340'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='http://www.youtube.com/v/", $formatted_body);
+			$formatted_body = str_ireplace("[/youtube]", "&hl=en_US&fs=1&' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='560' height='340'></embed></object></center>", $formatted_body);
+			
+			if (!$edit_view) echo "<p style='text-align:left;'>$formatted_body</p>\n";
 			
 			else
 			{
@@ -185,6 +200,20 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 			{
 				echo "<input style='display:block; margin:0px auto 20px auto;' type='submit' ";
 				echo "value='  Save Changes  ' />\n";
+				
+				if (!empty($post_id))
+				{
+					echo "<ul style='text-align:left; font-size:x-small;'>";
+					echo "<li>HTML is not allowed.</li>";
+					echo "<li>For <span style='font-weight:bold;'>bold</span> text use the format: [b]bold text here[/b].</li>";
+					echo "<li>For <span style='font-style:italic;'>italic</span> text: [i]italic text here[/i].</li>";
+					echo "<li>For <span style='text-decoration:underline;'>underlined</span>: [u]underlined text here[/u].</li>";
+					echo "<li>For <span style='text-decoration:line-through;'>strikethroughs</span>: [s]strikethrough here[/s].</li>";
+					echo "<li>To embed an image use the format: [img]source URL here[/img].</li>";
+					echo "<li>To embed a <a href='http://www.youtube.com' target='_blank'>YouTube</a> clip: [youtube]clip ID (e.g., qrO4YZeyl0I) here[/youtube].</li>";
+					echo "</ul>\n";
+				}
+				
 				echo "</form>\n";
 			}
 			
@@ -208,7 +237,7 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 				}
 				
 				echo "<input onClick=\"if (confirm('Permanently delete this post?')) ";
-				echo "parent.location = 'deletepost.php?id=$post_id';\" type='button' value='Delete' />\n";
+				echo "parent.location = 'deletepost.php?id=$id&pid=$post_id&';\" type='button' value='Delete' />\n";
 			}
 			
 			echo "</span>\n";			
@@ -223,7 +252,7 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 		if (empty($label) || $label_matches) $count++;
 	}
 	
-	if (empty($post_id))
+	if (empty($post_id) && empty($label))
 	{
 		echo "<p style='text-align:center;'>\n";
 	
@@ -259,7 +288,6 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 	?>
 	
 	</div>
-</div>
 </div>
 </body>
 </html>

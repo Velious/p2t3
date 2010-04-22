@@ -54,14 +54,14 @@ function validateForm(form)
 
 <form onSubmit='return validateForm(this);' method='post' action='addblog.php'>
 <div style="margin-left:50px;">
-<p style='text-align:left;'><label style='vertical-align:top;' for='name'>Blogger Name:</label> 
-<input style='width:200px;' name='name' type='text' id="name" placeholder="Name of Blogger" /></p>
 <p style='text-align:left;'><label style='vertical-align:top;' for='title'>Title:</label> 
 <input style='width:300px;' name='title' type='text' id="title" placeholder="Title of this Blog."/></p>
 <p style='text-align:left;'><label style='vertical-align:top;' for='blog'>Blog Entry: </label> 
 <textarea style='width:400px; vertical-align:text-top; display:inline; margin-left:0px;' name='blog' id="blog" rows=10 maxlength=300 placeholder="Blog Entry             (MAX 300 characters)"></textarea></p>
-	  <p style='text-align:left;'><label style='vertical-align:top;' for='labels'>Labels (separated by commas):</label> 
-	  <input style='width:300px;' name="labels" id="labels" type="text" /></p>
+<p style='text-align:left;'><label style='vertical-align:top;' for='labels'>Labels (separated by commas):</label> 
+<input style='width:300px;' name="labels" id="labels" type="text" /></p>
+<p style='text-align:left;'><label style='vertical-align:top;' for='name'>Blogger Name:</label> 
+<input style='width:200px;' name='name' type='text' id="name" placeholder="Name of Blogger" /></p>
 
 <p><input style='display:block; margin-left:auto; margin-right:auto;' type='submit' value='  Submit  ' /></p>
 </div>
