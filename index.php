@@ -19,7 +19,7 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <title>WikiBlog</title>
+  <title>WikiBlog<?php if ($edit_view) echo " | Edit" ?></title>
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
@@ -117,21 +117,14 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 		
 		if ($label_matches || ($id == $post_id) || (empty($label) && ($count >= $start) && ($count <= $end)))
 		{
-			echo "<a name='post$id'></a>\n";
-			echo "<fieldset class='blog-post'>\n";
-			
-			if (!$edit_view)
-			{
-				echo "<h1 style='text-align:center;'><a class='post-title' href='?pid=$id'>$title</a></h1>\n";
-			}
-			
-			else
-			{
-				echo "<form onClick='return validatePostForm(this);' method='post' ";
-				echo "action='updatepost.php?id=$id&start=$start&end=$end'>\n";
-				echo "<input class='edit-post' type='text' name='title' ";
-				echo "value='$title' />\n";
-			}
+			$title = str_ireplace("[b]", "<span style='font-weight:bold;'>", $title);
+			$title = str_ireplace("[i]", "<span style='font-style:italic;'>", $title);
+			$title = str_ireplace("[u]", "<span style='text-decoration:underline;'>", $title);
+			$title = str_ireplace("[s]", "<span style='text-decoration:line-through;'>", $title);
+			$title = str_ireplace("[/b]", "</span>", $title);
+			$title = str_ireplace("[/i]", "</span>", $title);
+			$title = str_ireplace("[/u]", "</span>", $title);
+			$title = str_ireplace("[/s]", "</span>", $title);
 			
 			$formatted_body = nl2br($body);
 			$formatted_body = str_ireplace("[b]", "<span style='font-weight:bold;'>", $formatted_body);
@@ -148,6 +141,22 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 			$formatted_body = str_ireplace("[/img]", "' />", $formatted_body);
 			$formatted_body = str_ireplace("[youtube]", "<center><object width='560' height='340'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='http://www.youtube.com/v/", $formatted_body);
 			$formatted_body = str_ireplace("[/youtube]", "&hl=en_US&fs=1&' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='560' height='340'></embed></object></center>", $formatted_body);
+			
+			echo "<a name='post$id'></a>\n";
+			echo "<fieldset class='blog-post'>\n";
+			
+			if (!$edit_view)
+			{
+				echo "<h1 style='text-align:center;'><a class='post-title' href='?pid=$id'>$title</a></h1>\n";
+			}
+			
+			else
+			{
+				echo "<form onClick='return validatePostForm(this);' method='post' ";
+				echo "action='updatepost.php?id=$id&start=$start&end=$end'>\n";
+				echo "<input class='edit-post' type='text' name='title' ";
+				echo "value='$title' />\n";
+			}			
 			
 			if (!$edit_view) echo "<p style='text-align:left;'>$formatted_body</p>\n";
 			
@@ -209,7 +218,8 @@ if (!empty($post_id) && (!empty($start) || !empty($end) || !empty($label)))
 					echo "<li>For <span style='font-style:italic;'>italic</span> text: [i]italic text here[/i].</li>";
 					echo "<li>For <span style='text-decoration:underline;'>underlined</span>: [u]underlined text here[/u].</li>";
 					echo "<li>For <span style='text-decoration:line-through;'>strikethroughs</span>: [s]strikethrough here[/s].</li>";
-					echo "<li>To embed an image use the format: [img]source URL here[/img].</li>";
+					echo "<li>To embed an image use the format: [img]source URL here[/img].";
+					echo "<li>For floating images: [img float=left]...[/img] or [img float=right]...[/img].</li></li>";
 					echo "<li>To embed a <a href='http://www.youtube.com' target='_blank'>YouTube</a> clip: [youtube]clip ID (e.g., qrO4YZeyl0I) here[/youtube].</li>";
 					echo "</ul>\n";
 				}
