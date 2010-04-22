@@ -58,7 +58,7 @@ for ($i = ($count - 1); $i >= 0; $i--)
 	
 	if ($comment['post'] == new MongoID($post_id))
 	{
-		echo "<a name='comment$comment_count'></a>";
+		echo "<a name='comment$comment_id'></a>";
 		echo "<fieldset class='comment'>\n";
 		echo "<span style='font-weight:bold;'>$poster said...</span>\n";
 		echo "<blockquote>$message</blockquote>\n";

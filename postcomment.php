@@ -14,7 +14,6 @@ $year = date("Y");
 $time = date("g:i a");
 
 $comments = $db->comments;
-$comment_id = ($comments->count()) + 1;
 
 $doc = array(
 	"post" => $post_id,
@@ -30,5 +29,5 @@ $doc = array(
 
 $comments->insert($doc);
 
-header("location:.?pid=$post_id#comment$comment_id");
+header("location:.?pid=$post_id#comments");
 ?>
